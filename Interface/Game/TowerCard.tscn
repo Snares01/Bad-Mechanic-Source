@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Interface/Assets/TextureButtonSounds.gd" type="Script" id=1]
+[ext_resource path="res://Mobs/hit_flash_shader.tres" type="Material" id=2]
+[ext_resource path="res://Towers/BombHatch/Resources/bomb_card.png" type="Texture" id=3]
+[ext_resource path="res://Interface/Assets/SinsGold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Interface/Game/Assets/level_button_normal.png" type="Texture" id=5]
+[ext_resource path="res://Interface/Game/TowerCard.gd" type="Script" id=6]
+[ext_resource path="res://Interface/Game/Assets/level_button_blink.png" type="Texture" id=7]
+[ext_resource path="res://Interface/Game/Assets/level_button_pressed.png" type="Texture" id=8]
+[ext_resource path="res://Interface/Game/Assets/level_button_hover.png" type="Texture" id=9]
+[ext_resource path="res://Interface/Game/Assets/level_button_disabled.png" type="Texture" id=10]
+
+[sub_resource type="DynamicFont" id=1]
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[node name="TowerCard" type="VBoxContainer"]
+margin_top = -15.0
+margin_right = 40.0
+margin_bottom = 25.0
+script = ExtResource( 6 )
+blink_texture = ExtResource( 7 )
+nonblink_texture = ExtResource( 5 )
+
+[node name="Level" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_stretch_ratio = 0.0
+custom_fonts/font = SubResource( 1 )
+align = 1
+valign = 2
+autowrap = true
+
+[node name="Card" type="TextureButton" parent="."]
+material = ExtResource( 2 )
+margin_left = 2.0
+margin_top = 19.0
+margin_right = 38.0
+margin_bottom = 65.0
+size_flags_horizontal = 4
+texture_normal = ExtResource( 3 )
+
+[node name="Upgrade" type="TextureButton" parent="."]
+visible = false
+margin_left = 2.0
+margin_top = 69.0
+margin_right = 38.0
+margin_bottom = 84.0
+size_flags_horizontal = 4
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 10 )
+script = ExtResource( 1 )
+
+[connection signal="button_down" from="Card" to="." method="_on_Card_button_down"]
+[connection signal="button_up" from="Card" to="." method="_on_Card_button_up"]
+[connection signal="mouse_entered" from="Card" to="." method="_on_Card_mouse_entered"]
+[connection signal="mouse_exited" from="Card" to="." method="_on_Card_mouse_exited"]
+[connection signal="pressed" from="Card" to="." method="_on_card_pressed"]
+[connection signal="mouse_entered" from="Upgrade" to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Upgrade" to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="Upgrade" to="." method="_on_upgrade_pressed"]

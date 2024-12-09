@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Items/EndPortal/EndPortal.gd" type="Script" id=1]
+
+[node name="EndPortalEffect" type="Node"]
+script = ExtResource( 1 )

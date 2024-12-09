@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerInfo.gd" type="Script" id=1]
+[ext_resource path="res://Towers/DemoScatter/Main Scenes/ScatterPreview.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Towers/DemoScatter/UI/orb_card_normal.png" type="Texture" id=4]
+[ext_resource path="res://Towers/DemoScatter/Main Scenes/Scatter.tscn" type="PackedScene" id=7]
+
+[resource]
+script = ExtResource( 1 )
+name = "Orb Shooting Device"
+shop_price = 40
+sell_price = 30
+rarity = 1.0
+description = "Orbs can hit multiple enemies at once"
+id = 1
+cost = 80
+level_sell_bonus = 7
+target = "first"
+preview_instance = ExtResource( 3 )
+tower_instance = ExtResource( 7 )
+max_level = 10
+img_normal = ExtResource( 4 )

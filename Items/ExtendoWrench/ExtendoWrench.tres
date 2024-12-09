@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Items/!Classes/GameModifierInfo.gd" type="Script" id=1]
+[ext_resource path="res://Items/ExtendoWrench/ExtendoWrench.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Items/ExtendoWrench/wrench.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 1 )
+name = "Extendo Wrench"
+shop_price = 40
+sell_price = 30
+rarity = 1.0
+description = "Significantly increase build range"
+preview_sprite = ExtResource( 3 )
+effect = ExtResource( 2 )
+repeating = false

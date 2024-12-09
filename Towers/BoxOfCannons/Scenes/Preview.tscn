@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerPreview.gd" type="Script" id=1]
+[ext_resource path="res://Towers/BoxOfCannons/Resources/crate_with_cannons.png" type="Texture" id=2]
+[ext_resource path="res://Towers/BoxOfCannons/Scenes/BoxOfCannons.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.5
+height = 10.0
+
+[node name="TowerPreview" type="Area2D"]
+script = ExtResource( 1 )
+tower_instance = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -4.5 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+offset = Vector2( 0, -8 )
+hframes = 3

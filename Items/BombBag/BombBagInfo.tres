@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Items/!Classes/ConsumableInfo.gd" type="Script" id=1]
+[ext_resource path="res://Items/BombBag/BombBagEffect.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Items/BombBag/bomb_icon.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 1 )
+name = "Bomb Bag"
+shop_price = 100
+sell_price = 70
+rarity = 1.0
+description = "Place bombs that destroy walls and mobs"
+is_cooldown = false
+cooldown_duration = 10.0
+max_uses = 4
+img_ui = ExtResource( 3 )
+consume_effect = ExtResource( 2 )
+preview_effect = ExtResource( 2 )

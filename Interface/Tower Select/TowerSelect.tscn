@@ -1,0 +1,79 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Interface/Assets/ButtonSounds.gd" type="Script" id=1]
+[ext_resource path="res://Interface/Tower Select/TowerSelect.gd" type="Script" id=2]
+[ext_resource path="res://Interface/Theme_Main.tres" type="Theme" id=3]
+[ext_resource path="res://Interface/Tower Select/SelectPanel.gd" type="Script" id=4]
+[ext_resource path="res://Interface/Tower Select/Inventory.gd" type="Script" id=5]
+
+[node name="TowerSelect" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+script = ExtResource( 2 )
+
+[node name="VBox" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="Title" type="Label" parent="VBox"]
+margin_right = 310.0
+margin_bottom = 14.0
+theme = ExtResource( 3 )
+text = "Tower Select"
+align = 1
+
+[node name="Inventory" type="MarginContainer" parent="VBox"]
+unique_name_in_owner = true
+margin_top = 18.0
+margin_right = 310.0
+margin_bottom = 147.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 5 )
+
+[node name="Grid" type="GridContainer" parent="VBox/Inventory"]
+margin_left = 155.0
+margin_right = 155.0
+margin_bottom = 129.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+columns = 7
+
+[node name="SelectPanel" type="PanelContainer" parent="VBox"]
+unique_name_in_owner = true
+margin_left = 150.0
+margin_top = 151.0
+margin_right = 160.0
+margin_bottom = 210.0
+rect_min_size = Vector2( 0, 59 )
+size_flags_horizontal = 4
+theme = ExtResource( 3 )
+script = ExtResource( 4 )
+
+[node name="HBox" type="HBoxContainer" parent="VBox/SelectPanel"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 5.0
+margin_bottom = 53.0
+mouse_filter = 2
+alignment = 1
+
+[node name="Continue" type="Button" parent="VBox"]
+margin_left = 120.0
+margin_top = 214.0
+margin_right = 190.0
+margin_bottom = 230.0
+rect_min_size = Vector2( 70, 0 )
+focus_mode = 0
+size_flags_horizontal = 4
+theme = ExtResource( 3 )
+text = "Continue"
+script = ExtResource( 1 )
+
+[connection signal="pressed" from="VBox/Continue" to="." method="_on_continue_pressed"]

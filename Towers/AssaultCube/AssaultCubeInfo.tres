@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerInfo.gd" type="Script" id=1]
+[ext_resource path="res://Towers/AssaultCube/Scenes/AssaultCubePreview.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/AssaultCube/Scenes/AssaultCube.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Towers/AssaultCube/Resources/ui_card.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 1 )
+name = "Assault Cube"
+shop_price = 300
+sell_price = 100
+rarity = 1.0
+description = "This cube is packed with violence"
+id = 24
+cost = 70
+level_sell_bonus = 10
+target = "close"
+preview_instance = ExtResource( 2 )
+tower_instance = ExtResource( 3 )
+max_level = 14
+img_normal = ExtResource( 4 )

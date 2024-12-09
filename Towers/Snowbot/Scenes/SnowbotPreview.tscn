@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Towers/Snowbot/Resources/snowbody.png" type="Texture" id=1]
+[ext_resource path="res://Towers/!Classes/TowerPreview.gd" type="Script" id=2]
+[ext_resource path="res://Towers/Snowbot/Resources/snowbot_arm.png" type="Texture" id=3]
+[ext_resource path="res://Towers/Snowbot/Scenes/Snowbot.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 6.0
+height = 3.0
+
+[node name="TowerPreview" type="Area2D"]
+script = ExtResource( 2 )
+tower_instance = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -9 )
+texture = ExtResource( 1 )
+hframes = 2
+
+[node name="Sprite" type="Sprite" parent="Sprite"]
+position = Vector2( -3, 2 )
+texture = ExtResource( 3 )
+hframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -5 )
+rotation = 1.5708
+shape = SubResource( 1 )

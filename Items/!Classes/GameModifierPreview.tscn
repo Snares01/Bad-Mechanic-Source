@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Items/!Classes/GameModifierPreview.gd" type="Script" id=2]
+
+[node name="GameModifierPreview" type="Sprite"]
+script = ExtResource( 2 )

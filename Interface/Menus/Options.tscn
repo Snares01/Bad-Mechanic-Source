@@ -1,0 +1,207 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Interface/Menus/Options.gd" type="Script" id=1]
+[ext_resource path="res://Interface/Theme_Main.tres" type="Theme" id=2]
+[ext_resource path="res://Interface/Assets/ButtonSounds.gd" type="Script" id=3]
+
+[node name="Options" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+script = ExtResource( 1 )
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_right = 310.0
+margin_bottom = 230.0
+
+[node name="Title" type="Label" parent="VBox"]
+margin_right = 310.0
+margin_bottom = 14.0
+theme = ExtResource( 2 )
+text = "Options"
+align = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="VBox"]
+margin_top = 18.0
+margin_right = 310.0
+margin_bottom = 210.0
+size_flags_vertical = 3
+
+[node name="Hbox" type="HBoxContainer" parent="VBox/CenterContainer"]
+margin_left = 24.0
+margin_top = 32.0
+margin_right = 286.0
+margin_bottom = 160.0
+
+[node name="VideoSettings" type="VBoxContainer" parent="VBox/CenterContainer/Hbox"]
+margin_right = 125.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 125, 0 )
+
+[node name="Label" type="Label" parent="VBox/CenterContainer/Hbox/VideoSettings"]
+margin_right = 125.0
+margin_bottom = 14.0
+theme = ExtResource( 2 )
+text = "Video"
+align = 1
+
+[node name="WindowOptions" type="OptionButton" parent="VBox/CenterContainer/Hbox/VideoSettings"]
+unique_name_in_owner = true
+margin_top = 18.0
+margin_right = 125.0
+margin_bottom = 34.0
+focus_mode = 0
+theme = ExtResource( 2 )
+text = "Windowed"
+align = 1
+items = [ "Windowed", null, false, 0, null, "Fullscreen", null, false, 1, null, "Borderless", null, false, 2, null ]
+selected = 0
+
+[node name="VSeparator" type="VSeparator" parent="VBox/CenterContainer/Hbox"]
+margin_left = 129.0
+margin_right = 133.0
+margin_bottom = 128.0
+
+[node name="AudioSettings" type="VBoxContainer" parent="VBox/CenterContainer/Hbox"]
+margin_left = 137.0
+margin_right = 262.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 125, 0 )
+custom_constants/separation = 8
+
+[node name="Label" type="Label" parent="VBox/CenterContainer/Hbox/AudioSettings"]
+margin_right = 125.0
+margin_bottom = 14.0
+theme = ExtResource( 2 )
+text = "Audio"
+align = 1
+
+[node name="Master" type="VBoxContainer" parent="VBox/CenterContainer/Hbox/AudioSettings"]
+margin_top = 22.0
+margin_right = 125.0
+margin_bottom = 52.0
+custom_constants/separation = 0
+
+[node name="Title" type="Label" parent="VBox/CenterContainer/Hbox/AudioSettings/Master"]
+margin_right = 125.0
+margin_bottom = 14.0
+theme = ExtResource( 2 )
+text = "Master"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBox/CenterContainer/Hbox/AudioSettings/Master"]
+margin_top = 14.0
+margin_right = 125.0
+margin_bottom = 30.0
+
+[node name="MasterSlider" type="HSlider" parent="VBox/CenterContainer/Hbox/AudioSettings/Master/HBoxContainer"]
+unique_name_in_owner = true
+margin_right = 86.0
+margin_bottom = 16.0
+focus_mode = 0
+size_flags_horizontal = 3
+theme = ExtResource( 2 )
+max_value = 1.0
+step = 0.025
+
+[node name="MasterPercent" type="Label" parent="VBox/CenterContainer/Hbox/AudioSettings/Master/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 90.0
+margin_top = 1.0
+margin_right = 125.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 35, 0 )
+theme = ExtResource( 2 )
+text = "100%"
+
+[node name="Music" type="VBoxContainer" parent="VBox/CenterContainer/Hbox/AudioSettings"]
+margin_top = 60.0
+margin_right = 125.0
+margin_bottom = 90.0
+custom_constants/separation = 0
+
+[node name="Title" type="Label" parent="VBox/CenterContainer/Hbox/AudioSettings/Music"]
+margin_right = 125.0
+margin_bottom = 14.0
+theme = ExtResource( 2 )
+text = "Music"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBox/CenterContainer/Hbox/AudioSettings/Music"]
+margin_top = 14.0
+margin_right = 125.0
+margin_bottom = 30.0
+
+[node name="MusicSlider" type="HSlider" parent="VBox/CenterContainer/Hbox/AudioSettings/Music/HBoxContainer"]
+unique_name_in_owner = true
+margin_right = 86.0
+margin_bottom = 16.0
+focus_mode = 0
+size_flags_horizontal = 3
+theme = ExtResource( 2 )
+max_value = 1.0
+step = 0.025
+
+[node name="MusicPercent" type="Label" parent="VBox/CenterContainer/Hbox/AudioSettings/Music/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 90.0
+margin_top = 1.0
+margin_right = 125.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 35, 0 )
+theme = ExtResource( 2 )
+text = "100%"
+
+[node name="SoundEffects" type="VBoxContainer" parent="VBox/CenterContainer/Hbox/AudioSettings"]
+margin_top = 98.0
+margin_right = 125.0
+margin_bottom = 128.0
+custom_constants/separation = 0
+
+[node name="Title" type="Label" parent="VBox/CenterContainer/Hbox/AudioSettings/SoundEffects"]
+margin_right = 125.0
+margin_bottom = 14.0
+theme = ExtResource( 2 )
+text = "UI"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBox/CenterContainer/Hbox/AudioSettings/SoundEffects"]
+margin_top = 14.0
+margin_right = 125.0
+margin_bottom = 30.0
+
+[node name="UISlider" type="HSlider" parent="VBox/CenterContainer/Hbox/AudioSettings/SoundEffects/HBoxContainer"]
+unique_name_in_owner = true
+margin_right = 86.0
+margin_bottom = 16.0
+focus_mode = 0
+size_flags_horizontal = 3
+theme = ExtResource( 2 )
+max_value = 1.0
+step = 0.025
+
+[node name="UIPercent" type="Label" parent="VBox/CenterContainer/Hbox/AudioSettings/SoundEffects/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 90.0
+margin_top = 1.0
+margin_right = 125.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 35, 0 )
+theme = ExtResource( 2 )
+text = "100%"
+
+[node name="Back" type="Button" parent="VBox"]
+margin_top = 214.0
+margin_right = 40.0
+margin_bottom = 230.0
+rect_min_size = Vector2( 40, 0 )
+size_flags_horizontal = 0
+theme = ExtResource( 2 )
+text = "Back"
+script = ExtResource( 3 )
+
+[connection signal="item_selected" from="VBox/CenterContainer/Hbox/VideoSettings/WindowOptions" to="." method="_on_OptionButton_item_selected"]
+[connection signal="value_changed" from="VBox/CenterContainer/Hbox/AudioSettings/Master/HBoxContainer/MasterSlider" to="." method="_on_MasterSlider_value_changed"]
+[connection signal="value_changed" from="VBox/CenterContainer/Hbox/AudioSettings/Music/HBoxContainer/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="value_changed" from="VBox/CenterContainer/Hbox/AudioSettings/SoundEffects/HBoxContainer/UISlider" to="." method="_on_UISlider_value_changed"]
+[connection signal="pressed" from="VBox/Back" to="." method="_on_Back_pressed"]

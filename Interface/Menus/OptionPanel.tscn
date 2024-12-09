@@ -1,0 +1,578 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Interface/Theme_Main.tres" type="Theme" id=1]
+[ext_resource path="res://Interface/Menus/OptionPanel.gd" type="Script" id=2]
+[ext_resource path="res://Interface/Assets/ButtonSounds.gd" type="Script" id=3]
+[ext_resource path="res://Interface/Assets/Options/panel_frame.png" type="Texture" id=4]
+[ext_resource path="res://Interface/Assets/Options/tab_frame.png" type="Texture" id=5]
+[ext_resource path="res://Interface/Assets/Options/bg_tab_frame.png" type="Texture" id=6]
+[ext_resource path="res://Interface/Assets/Options/RebindButton.gd" type="Script" id=7]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0, 0, 0 )
+border_color = Color( 0, 0, 0, 1 )
+corner_detail = 1
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 5 )
+region_rect = Rect2( 0, 0, 16, 16 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 2.0
+margin_bottom = 2.0
+expand_margin_bottom = 4.0
+
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 6 )
+region_rect = Rect2( 0, 0, 16, 16 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 2.0
+margin_bottom = 2.0
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 4 )
+region_rect = Rect2( 0, 0, 16, 16 )
+margin_left = 5.0
+margin_right = 5.0
+margin_top = 5.0
+margin_bottom = 5.0
+
+[sub_resource type="StyleBoxLine" id=5]
+color = Color( 1, 1, 1, 0.776471 )
+vertical = true
+
+[node name="OptionsPanel" type="PanelContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_right = 312.0
+margin_bottom = 204.0
+theme = ExtResource( 1 )
+
+[node name="Options" type="TabContainer" parent="VBox"]
+margin_right = 312.0
+margin_bottom = 184.0
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+custom_styles/tab_fg = SubResource( 2 )
+custom_styles/tab_bg = SubResource( 4 )
+custom_styles/panel = SubResource( 3 )
+tab_align = 0
+all_tabs_in_front = true
+
+[node name="Video" type="CenterContainer" parent="VBox/Options"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 29.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="HBox" type="HBoxContainer" parent="VBox/Options/Video"]
+margin_left = 13.0
+margin_top = 41.0
+margin_right = 289.0
+margin_bottom = 108.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Window" type="VBoxContainer" parent="VBox/Options/Video/HBox"]
+margin_right = 120.0
+margin_bottom = 67.0
+
+[node name="WindowOption" type="OptionButton" parent="VBox/Options/Video/HBox/Window"]
+unique_name_in_owner = true
+margin_right = 120.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 120, 0 )
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Fullscreen"
+align = 1
+items = [ "Fullscreen", null, false, 0, null, "Windowed", null, false, 1, null, "Borderless", null, false, 2, null ]
+selected = 0
+
+[node name="HBox" type="HBoxContainer" parent="VBox/Options/Video/HBox/Window"]
+margin_top = 20.0
+margin_right = 120.0
+margin_bottom = 36.0
+
+[node name="MonitorLabel" type="Label" parent="VBox/Options/Video/HBox/Window/HBox"]
+unique_name_in_owner = true
+margin_top = 1.0
+margin_right = 56.0
+margin_bottom = 15.0
+text = "Monitor"
+
+[node name="MonitorOption" type="OptionButton" parent="VBox/Options/Video/HBox/Window/HBox"]
+unique_name_in_owner = true
+margin_left = 60.0
+margin_right = 90.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 30, 0 )
+focus_mode = 0
+enabled_focus_mode = 0
+
+[node name="VSeparator" type="VSeparator" parent="VBox/Options/Video/HBox"]
+margin_left = 140.0
+margin_right = 144.0
+margin_bottom = 67.0
+custom_styles/separator = SubResource( 5 )
+
+[node name="Frames" type="VBoxContainer" parent="VBox/Options/Video/HBox"]
+margin_left = 164.0
+margin_right = 276.0
+margin_bottom = 67.0
+rect_min_size = Vector2( 112, 0 )
+
+[node name="VSync" type="CheckBox" parent="VBox/Options/Video/HBox/Frames"]
+unique_name_in_owner = true
+margin_right = 112.0
+margin_bottom = 18.0
+focus_mode = 0
+text = "V-Sync"
+
+[node name="MaxFramerate" type="VBoxContainer" parent="VBox/Options/Video/HBox/Frames"]
+unique_name_in_owner = true
+margin_top = 22.0
+margin_right = 112.0
+margin_bottom = 67.0
+custom_constants/separation = 0
+
+[node name="FrameLabel" type="Label" parent="VBox/Options/Video/HBox/Frames/MaxFramerate"]
+unique_name_in_owner = true
+margin_right = 112.0
+margin_bottom = 31.0
+text = "Max Framerate:
+60"
+align = 1
+
+[node name="FrameSlider" type="HSlider" parent="VBox/Options/Video/HBox/Frames/MaxFramerate"]
+unique_name_in_owner = true
+margin_top = 31.0
+margin_right = 112.0
+margin_bottom = 45.0
+min_value = 10.0
+max_value = 241.0
+value = 60.0
+
+[node name="Audio" type="CenterContainer" parent="VBox/Options"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="HBox" type="HBoxContainer" parent="VBox/Options/Audio"]
+margin_left = 16.0
+margin_top = 33.0
+margin_right = 288.0
+margin_bottom = 114.0
+custom_constants/separation = 40
+
+[node name="VBox" type="VBoxContainer" parent="VBox/Options/Audio/HBox"]
+margin_right = 116.0
+margin_bottom = 81.0
+custom_constants/separation = 25
+
+[node name="Master" type="VBoxContainer" parent="VBox/Options/Audio/HBox/VBox"]
+margin_right = 116.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 90, 0 )
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="VBox/Options/Audio/HBox/VBox/Master"]
+margin_right = 116.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 75, 0 )
+text = "Master"
+
+[node name="HBox" type="HBoxContainer" parent="VBox/Options/Audio/HBox/VBox/Master"]
+margin_top = 14.0
+margin_right = 116.0
+margin_bottom = 28.0
+
+[node name="MasterSlider" type="HSlider" parent="VBox/Options/Audio/HBox/VBox/Master/HBox"]
+unique_name_in_owner = true
+margin_right = 80.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 80, 0 )
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+
+[node name="MasterLabel" type="Label" parent="VBox/Options/Audio/HBox/VBox/Master/HBox"]
+unique_name_in_owner = true
+margin_left = 84.0
+margin_right = 116.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 32, 0 )
+text = "100%"
+clip_text = true
+
+[node name="UI" type="VBoxContainer" parent="VBox/Options/Audio/HBox/VBox"]
+margin_top = 53.0
+margin_right = 116.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 90, 0 )
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="VBox/Options/Audio/HBox/VBox/UI"]
+margin_right = 116.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 75, 0 )
+text = "UI"
+
+[node name="HBox" type="HBoxContainer" parent="VBox/Options/Audio/HBox/VBox/UI"]
+margin_top = 14.0
+margin_right = 116.0
+margin_bottom = 28.0
+
+[node name="UISlider" type="HSlider" parent="VBox/Options/Audio/HBox/VBox/UI/HBox"]
+unique_name_in_owner = true
+margin_right = 80.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 80, 0 )
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+
+[node name="UILabel" type="Label" parent="VBox/Options/Audio/HBox/VBox/UI/HBox"]
+unique_name_in_owner = true
+margin_left = 84.0
+margin_right = 116.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 32, 0 )
+text = "100%"
+
+[node name="VBox2" type="VBoxContainer" parent="VBox/Options/Audio/HBox"]
+margin_left = 156.0
+margin_right = 272.0
+margin_bottom = 81.0
+custom_constants/separation = 25
+
+[node name="Effects" type="VBoxContainer" parent="VBox/Options/Audio/HBox/VBox2"]
+margin_right = 116.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 90, 0 )
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="VBox/Options/Audio/HBox/VBox2/Effects"]
+margin_right = 116.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 75, 0 )
+text = "Effects"
+
+[node name="HBox" type="HBoxContainer" parent="VBox/Options/Audio/HBox/VBox2/Effects"]
+margin_top = 14.0
+margin_right = 116.0
+margin_bottom = 28.0
+
+[node name="EffectSlider" type="HSlider" parent="VBox/Options/Audio/HBox/VBox2/Effects/HBox"]
+unique_name_in_owner = true
+margin_right = 80.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 80, 0 )
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+
+[node name="EffectLabel" type="Label" parent="VBox/Options/Audio/HBox/VBox2/Effects/HBox"]
+unique_name_in_owner = true
+margin_left = 84.0
+margin_right = 116.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 32, 0 )
+text = "100%"
+
+[node name="Music" type="VBoxContainer" parent="VBox/Options/Audio/HBox/VBox2"]
+margin_top = 53.0
+margin_right = 116.0
+margin_bottom = 81.0
+rect_min_size = Vector2( 90, 0 )
+custom_constants/separation = 0
+
+[node name="Label" type="Label" parent="VBox/Options/Audio/HBox/VBox2/Music"]
+margin_right = 116.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 75, 0 )
+text = "Music"
+
+[node name="HBox" type="HBoxContainer" parent="VBox/Options/Audio/HBox/VBox2/Music"]
+margin_top = 14.0
+margin_right = 116.0
+margin_bottom = 28.0
+
+[node name="MusicSlider" type="HSlider" parent="VBox/Options/Audio/HBox/VBox2/Music/HBox"]
+unique_name_in_owner = true
+margin_right = 80.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 80, 0 )
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.01
+
+[node name="MusicLabel" type="Label" parent="VBox/Options/Audio/HBox/VBox2/Music/HBox"]
+unique_name_in_owner = true
+margin_left = 84.0
+margin_right = 116.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 32, 0 )
+text = "100%"
+
+[node name="Gameplay" type="CenterContainer" parent="VBox/Options"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBox/Options/Gameplay"]
+margin_right = 276.0
+margin_bottom = 124.0
+custom_constants/separation = 30
+alignment = 1
+
+[node name="Remapping" type="HBoxContainer" parent="VBox/Options/Gameplay/VBoxContainer"]
+margin_right = 276.0
+margin_bottom = 76.0
+custom_constants/separation = 20
+
+[node name="VBox" type="VBoxContainer" parent="VBox/Options/Gameplay/VBoxContainer/Remapping"]
+margin_right = 124.0
+margin_bottom = 76.0
+
+[node name="HBoxUp" type="HBoxContainer" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/VBox"]
+margin_right = 124.0
+margin_bottom = 16.0
+alignment = 2
+
+[node name="Label" type="Label" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/VBox/HBoxUp"]
+margin_left = 24.0
+margin_top = 1.0
+margin_right = 80.0
+margin_bottom = 15.0
+text = "Run Up:"
+
+[node name="KeyUp" type="Button" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/VBox/HBoxUp"]
+margin_left = 84.0
+margin_right = 124.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 40, 0 )
+toggle_mode = true
+text = "H"
+script = ExtResource( 7 )
+
+[node name="HBoxDown" type="HBoxContainer" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/VBox"]
+margin_top = 20.0
+margin_right = 124.0
+margin_bottom = 36.0
+alignment = 2
+
+[node name="Label" type="Label" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/VBox/HBoxDown"]
+margin_left = 8.0
+margin_top = 1.0
+margin_right = 80.0
+margin_bottom = 15.0
+text = "Run Down:"
+
+[node name="KeyDown" type="Button" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/VBox/HBoxDown"]
+margin_left = 84.0
+margin_right = 124.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 40, 0 )
+toggle_mode = true
+text = "H"
+script = ExtResource( 7 )
+action = "move_down"
+
+[node name="HBoxLeft" type="HBoxContainer" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/VBox"]
+margin_top = 40.0
+margin_right = 124.0
+margin_bottom = 56.0
+alignment = 2
+
+[node name="Label" type="Label" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/VBox/HBoxLeft"]
+margin_left = 8.0
+margin_top = 1.0
+margin_right = 80.0
+margin_bottom = 15.0
+text = "Run Left:"
+
+[node name="KeyLeft" type="Button" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/VBox/HBoxLeft"]
+margin_left = 84.0
+margin_right = 124.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 40, 0 )
+toggle_mode = true
+text = "H"
+script = ExtResource( 7 )
+action = "move_left"
+
+[node name="HBoxRight" type="HBoxContainer" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/VBox"]
+margin_top = 60.0
+margin_right = 124.0
+margin_bottom = 76.0
+alignment = 2
+
+[node name="Label" type="Label" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/VBox/HBoxRight"]
+margin_top = 1.0
+margin_right = 80.0
+margin_bottom = 15.0
+text = "Run Right:"
+
+[node name="KeyRight" type="Button" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/VBox/HBoxRight"]
+margin_left = 84.0
+margin_right = 124.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 40, 0 )
+toggle_mode = true
+text = "H"
+script = ExtResource( 7 )
+action = "move_right"
+
+[node name="Vbox2" type="VBoxContainer" parent="VBox/Options/Gameplay/VBoxContainer/Remapping"]
+margin_left = 144.0
+margin_right = 276.0
+margin_bottom = 76.0
+
+[node name="HBox1" type="HBoxContainer" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/Vbox2"]
+margin_right = 132.0
+margin_bottom = 16.0
+alignment = 2
+
+[node name="Label" type="Label" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/Vbox2/HBox1"]
+margin_top = 1.0
+margin_right = 88.0
+margin_bottom = 15.0
+text = "Use Item 1:"
+
+[node name="KeyItem1" type="Button" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/Vbox2/HBox1"]
+margin_left = 92.0
+margin_right = 132.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 40, 0 )
+toggle_mode = true
+text = "H"
+script = ExtResource( 7 )
+action = "use_item_1"
+
+[node name="HBox2" type="HBoxContainer" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/Vbox2"]
+margin_top = 20.0
+margin_right = 132.0
+margin_bottom = 36.0
+alignment = 2
+
+[node name="Label" type="Label" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/Vbox2/HBox2"]
+margin_top = 1.0
+margin_right = 88.0
+margin_bottom = 15.0
+text = "Use Item 2:"
+
+[node name="KeyItem2" type="Button" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/Vbox2/HBox2"]
+margin_left = 92.0
+margin_right = 132.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 40, 0 )
+toggle_mode = true
+text = "H"
+script = ExtResource( 7 )
+action = "use_item_2"
+
+[node name="HBox3" type="HBoxContainer" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/Vbox2"]
+margin_top = 40.0
+margin_right = 132.0
+margin_bottom = 56.0
+alignment = 2
+
+[node name="Label" type="Label" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/Vbox2/HBox3"]
+margin_top = 1.0
+margin_right = 88.0
+margin_bottom = 15.0
+text = "Use Item 3:"
+
+[node name="KeyItem3" type="Button" parent="VBox/Options/Gameplay/VBoxContainer/Remapping/Vbox2/HBox3"]
+margin_left = 92.0
+margin_right = 132.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 40, 0 )
+toggle_mode = true
+text = "H"
+script = ExtResource( 7 )
+action = "use_item_3"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBox/Options/Gameplay/VBoxContainer"]
+margin_top = 106.0
+margin_right = 276.0
+margin_bottom = 124.0
+custom_constants/separation = 25
+alignment = 1
+
+[node name="Hints" type="CheckBox" parent="VBox/Options/Gameplay/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 20.0
+margin_right = 125.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 105, 0 )
+focus_mode = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Game Hints"
+
+[node name="Intro" type="CheckBox" parent="VBox/Options/Gameplay/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 150.0
+margin_right = 255.0
+margin_bottom = 18.0
+rect_min_size = Vector2( 105, 0 )
+focus_mode = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Skip Intro"
+
+[node name="Buttons" type="HBoxContainer" parent="VBox"]
+margin_top = 188.0
+margin_right = 312.0
+margin_bottom = 204.0
+custom_constants/separation = 20
+alignment = 1
+
+[node name="Apply" type="Button" parent="VBox/Buttons"]
+margin_left = 96.0
+margin_right = 146.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 50, 0 )
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Apply"
+script = ExtResource( 3 )
+
+[node name="Exit" type="Button" parent="VBox/Buttons"]
+margin_left = 166.0
+margin_right = 216.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 50, 0 )
+text = "Exit"
+script = ExtResource( 3 )
+
+[connection signal="item_selected" from="VBox/Options/Video/HBox/Window/WindowOption" to="." method="_on_WindowOption_item_selected"]
+[connection signal="item_selected" from="VBox/Options/Video/HBox/Window/HBox/MonitorOption" to="." method="make_sound"]
+[connection signal="toggled" from="VBox/Options/Video/HBox/Frames/VSync" to="." method="_on_VSync_toggled"]
+[connection signal="changed" from="VBox/Options/Video/HBox/Frames/MaxFramerate/FrameSlider" to="." method="_on_FrameSlider_changed"]
+[connection signal="value_changed" from="VBox/Options/Video/HBox/Frames/MaxFramerate/FrameSlider" to="." method="_on_FrameSlider_changed"]
+[connection signal="value_changed" from="VBox/Options/Audio/HBox/VBox/Master/HBox/MasterSlider" to="." method="_on_MasterSlider_value_changed"]
+[connection signal="value_changed" from="VBox/Options/Audio/HBox/VBox/UI/HBox/UISlider" to="." method="_on_UISlider_value_changed"]
+[connection signal="value_changed" from="VBox/Options/Audio/HBox/VBox2/Effects/HBox/EffectSlider" to="." method="_on_EffectSlider_value_changed"]
+[connection signal="value_changed" from="VBox/Options/Audio/HBox/VBox2/Music/HBox/MusicSlider" to="." method="_on_MusicSlider_value_changed"]
+[connection signal="pressed" from="VBox/Buttons/Apply" to="." method="apply_settings"]
+[connection signal="pressed" from="VBox/Buttons/Exit" to="." method="_on_Exit_pressed"]

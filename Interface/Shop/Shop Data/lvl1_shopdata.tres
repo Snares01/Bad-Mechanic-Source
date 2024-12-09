@@ -1,0 +1,26 @@
+[gd_resource type="Resource" load_steps=17 format=2]
+
+[ext_resource path="res://Interface/Shop/Shop Data/ShopData.gd" type="Script" id=1]
+[ext_resource path="res://Towers/PewPewPillar/PewPillarInfo.tres" type="Resource" id=2]
+[ext_resource path="res://Towers/DemoRifle/DemoRifleInfo.tres" type="Resource" id=3]
+[ext_resource path="res://Towers/SawbladeStump/SawbladeStumpInfo.tres" type="Resource" id=4]
+[ext_resource path="res://Towers/DemoSniper/DemoSniperInfo.tres" type="Resource" id=5]
+[ext_resource path="res://Towers/TowerFactory/TowerFactory.tres" type="Resource" id=6]
+[ext_resource path="res://Towers/Bumper/BumperInfo.tres" type="Resource" id=7]
+[ext_resource path="res://Items/Binoculars/Binoculars.tres" type="Resource" id=8]
+[ext_resource path="res://Items/Freeze/FreezeInfo.tres" type="Resource" id=9]
+[ext_resource path="res://Items/VacationDays/VacationDays.tres" type="Resource" id=10]
+[ext_resource path="res://Towers/BoxOfCannons/BoxOfGuns.tres" type="Resource" id=11]
+[ext_resource path="res://Items/MagneticGloves/MagneticGloves.tres" type="Resource" id=12]
+[ext_resource path="res://Towers/Snowbot/SnowbotInfo.tres" type="Resource" id=13]
+[ext_resource path="res://Items/SelfHelpBook/SelfHelpBook.tres" type="Resource" id=14]
+[ext_resource path="res://Items/Energy Drink/EnergyDrinkInfo.tres" type="Resource" id=15]
+[ext_resource path="res://Items/BackwardsJump/BackwardsLongJump.tres" type="Resource" id=16]
+
+[resource]
+script = ExtResource( 1 )
+towers = [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 2 ), ExtResource( 11 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 13 ), ExtResource( 7 ) ]
+items = [ ExtResource( 15 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 16 ) ]
+num_towers = Vector2( 3, 3 )
+num_items = Vector2( 3, 3 )
+shtupidness = 0.0

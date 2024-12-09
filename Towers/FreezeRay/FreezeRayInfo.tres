@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerInfo.gd" type="Script" id=1]
+[ext_resource path="res://Towers/FreezeRay/Scenes/FreezeRay.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/FreezeRay/Scenes/FreezeRayPreview.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Towers/FreezeRay/Resources/ui_card.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 1 )
+name = "Freeze Ray"
+shop_price = 60
+sell_price = 40
+rarity = 1.0
+description = "Can freeze multiple enemies with one ray blast"
+id = 16
+cost = 60
+level_sell_bonus = 8
+target = "first"
+preview_instance = ExtResource( 3 )
+tower_instance = ExtResource( 2 )
+max_level = 20
+img_normal = ExtResource( 4 )

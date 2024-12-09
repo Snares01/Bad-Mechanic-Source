@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerInfo.gd" type="Script" id=1]
+[ext_resource path="res://Towers/TowerFactory/Scenes/Factory.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/TowerFactory/Scenes/FactoryPreview.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Towers/TowerFactory/Resources/ui_card.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 1 )
+name = "Tower Factory"
+shop_price = 40
+sell_price = 30
+rarity = 1.0
+description = "Shoots towers that shoot bullets"
+id = 10
+cost = 100
+level_sell_bonus = 8
+target = "first"
+preview_instance = ExtResource( 3 )
+tower_instance = ExtResource( 2 )
+max_level = 10
+img_normal = ExtResource( 4 )

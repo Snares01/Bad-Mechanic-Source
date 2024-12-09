@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Interface/Theme_Main.tres" type="Theme" id=1]
+[ext_resource path="res://Interface/Assets/retro-pixel-arcade.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Interface/Assets/ButtonSounds.gd" type="Script" id=3]
+[ext_resource path="res://Interface/Menus/MainMenu.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[node name="MainMenu" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 10.0
+margin_right = -5.0
+margin_bottom = -5.0
+script = ExtResource( 4 )
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_right = 310.0
+margin_bottom = 225.0
+
+[node name="CenterContainer" type="CenterContainer" parent="VBox"]
+margin_right = 310.0
+margin_bottom = 205.0
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="VBox/CenterContainer"]
+margin_left = 59.0
+margin_top = 50.0
+margin_right = 251.0
+margin_bottom = 154.0
+alignment = 1
+
+[node name="Title" type="Label" parent="VBox/CenterContainer/VBox"]
+margin_right = 192.0
+margin_bottom = 24.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Bad Mechanic"
+
+[node name="Play" type="Button" parent="VBox/CenterContainer/VBox"]
+margin_top = 28.0
+margin_right = 192.0
+margin_bottom = 44.0
+theme = ExtResource( 1 )
+text = "Play"
+script = ExtResource( 3 )
+
+[node name="Hats" type="Button" parent="VBox/CenterContainer/VBox"]
+margin_top = 48.0
+margin_right = 192.0
+margin_bottom = 64.0
+theme = ExtResource( 1 )
+text = "Hats"
+script = ExtResource( 3 )
+
+[node name="Options" type="Button" parent="VBox/CenterContainer/VBox"]
+margin_top = 68.0
+margin_right = 192.0
+margin_bottom = 84.0
+theme = ExtResource( 1 )
+text = "Options"
+script = ExtResource( 3 )
+
+[node name="Quit" type="Button" parent="VBox/CenterContainer/VBox"]
+margin_top = 88.0
+margin_right = 192.0
+margin_bottom = 104.0
+theme = ExtResource( 1 )
+text = "Quit"
+script = ExtResource( 3 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBox"]
+margin_top = 209.0
+margin_right = 310.0
+margin_bottom = 225.0
+size_flags_vertical = 12
+custom_constants/separation = 6
+alignment = 2
+
+[node name="Version" type="Label" parent="VBox/HBoxContainer"]
+margin_right = 234.0
+margin_bottom = 16.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme = ExtResource( 1 )
+text = "demo 2.1"
+valign = 1
+autowrap = true
+
+[node name="Discord" type="Button" parent="VBox/HBoxContainer"]
+margin_left = 240.0
+margin_right = 310.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 70, 0 )
+theme = ExtResource( 1 )
+text = "Discord"
+script = ExtResource( 3 )
+
+[connection signal="pressed" from="VBox/CenterContainer/VBox/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="VBox/CenterContainer/VBox/Hats" to="." method="_on_Hats_pressed"]
+[connection signal="pressed" from="VBox/CenterContainer/VBox/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="VBox/CenterContainer/VBox/Quit" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="VBox/HBoxContainer/Discord" to="." method="_on_Discord_pressed"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Towers/FreezeRay/Scenes/FreezeRay.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Towers/PainRay/Scenes/PainRay.gd" type="Script" id=2]
+[ext_resource path="res://Towers/PainRay/Resources/pain_ray.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "test"
+
+[node name="PainRay" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+id = 17
+aim_ahead = 5.0
+color_idle = Color( 0.341176, 0.109804, 0.152941, 1 )
+color_aim = Color( 0.768627, 0.141176, 0.188235, 1 )
+color_shoot = Color( 1, 0, 0.266667, 1 )
+bullet_effect = 0
+
+[node name="Sprite" parent="." index="2"]
+texture = ExtResource( 3 )
+
+[node name="Animator" parent="." index="5"]
+anims/test = SubResource( 1 )

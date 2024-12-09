@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerInfo.gd" type="Script" id=1]
+[ext_resource path="res://Towers/BombHatch/Scenes/BombHatch.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/BombHatch/Resources/bomb_card.png" type="Texture" id=3]
+[ext_resource path="res://Towers/BombHatch/Scenes/BombHatchPreview.tscn" type="PackedScene" id=4]
+
+[resource]
+script = ExtResource( 1 )
+name = "Bomb Hatch"
+shop_price = 80
+sell_price = 55
+rarity = 1.0
+description = "Tosses bombs that deal huge splash damage"
+id = 6
+cost = 100
+level_sell_bonus = 10
+target = "close"
+preview_instance = ExtResource( 4 )
+tower_instance = ExtResource( 2 )
+max_level = 8
+img_normal = ExtResource( 3 )

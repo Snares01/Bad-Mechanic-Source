@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Mobs/Zombie/Zombie.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_col : hint_color = vec4(1.0);
+uniform float flash : hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	color.rgb = mix(color.rgb, flash_col.rgb, flash);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/flash_col = Color( 1, 1, 1, 1 )
+shader_param/flash = 0.0
+
+[node name="FastZombie" instance=ExtResource( 1 )]
+modulate = Color( 0.0156863, 1, 0.788235, 1 )
+max_health = 35.0
+speed = 18.0
+run_anim_speed = 1.5
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource( 2 )

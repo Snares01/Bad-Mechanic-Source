@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Towers/BoxOfCannons/Scenes/Preview.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Towers/BoxOfCannons/Scenes/BoxOfCannons.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/!Classes/TowerInfo.gd" type="Script" id=3]
+[ext_resource path="res://Towers/BoxOfCannons/UI/card_normal.png" type="Texture" id=5]
+
+[resource]
+script = ExtResource( 3 )
+name = "Box of Guns"
+shop_price = 10
+sell_price = 10
+rarity = 1.0
+description = "Take it for cheap, it scares us"
+id = 3
+cost = 50
+level_sell_bonus = 12
+target = "random"
+preview_instance = ExtResource( 1 )
+tower_instance = ExtResource( 2 )
+max_level = 8
+img_normal = ExtResource( 5 )

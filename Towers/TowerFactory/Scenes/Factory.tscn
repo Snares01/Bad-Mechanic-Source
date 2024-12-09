@@ -1,0 +1,140 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Towers/TowerFactory/Resources/factory.png" type="Texture" id=1]
+[ext_resource path="res://Towers/TowerFactory/Scenes/Factory.gd" type="Script" id=2]
+[ext_resource path="res://Towers/TowerFactory/Scenes/MiniTower.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 40.0
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.0
+height = 12.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Shoot"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 1.2, 1.3, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3, 4, 3, 2, 1, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "spawn_tower"
+}, {
+"args": [  ],
+"method": "check_mobs"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Shoot1"
+length = 1.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [ false ],
+"method": "spawn_tower"
+}, {
+"args": [  ],
+"method": "check_mobs"
+} ]
+}
+
+[node name="Factory" type="Area2D"]
+script = ExtResource( 2 )
+id = 10
+tower = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -7 )
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -7 )
+texture = ExtResource( 1 )
+hframes = 5
+frame = 1
+
+[node name="NoBuild" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoBuild"]
+position = Vector2( 0, -3 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 3 )
+anims/RESET = SubResource( 4 )
+anims/Shoot = SubResource( 5 )
+anims/Shoot1 = SubResource( 6 )

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" load_steps=14 format=2]
+
+[ext_resource path="res://Interface/Shop/Shop Data/ShopData.gd" type="Script" id=1]
+[ext_resource path="res://Towers/BombHatch/BombHatchInfo.tres" type="Resource" id=2]
+[ext_resource path="res://Items/Sandwiches/SubSandwich.tres" type="Resource" id=3]
+[ext_resource path="res://Towers/BigSpinner/BigSpinnerInfo.tres" type="Resource" id=4]
+[ext_resource path="res://Items/BucketMilk/BucketOfMilk.tres" type="Resource" id=5]
+[ext_resource path="res://Towers/Orbiter/OrbiterInfo.tres" type="Resource" id=6]
+[ext_resource path="res://Items/Health Potion/HealthPotion.tres" type="Resource" id=7]
+[ext_resource path="res://Items/Reroll/RerollInfo.tres" type="Resource" id=8]
+[ext_resource path="res://Towers/SushiTruck/SushiTruckInfo.tres" type="Resource" id=9]
+[ext_resource path="res://Items/ToughCookie/ToughCookie.tres" type="Resource" id=10]
+[ext_resource path="res://Items/ExtendoWrench/ExtendoWrench.tres" type="Resource" id=11]
+[ext_resource path="res://Items/Energy Drink/CooldownDrinkInfo.tres" type="Resource" id=12]
+[ext_resource path="res://Towers/FreezeRay/FreezeRayInfo.tres" type="Resource" id=13]
+
+[resource]
+script = ExtResource( 1 )
+towers = [ ExtResource( 2 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 13 ), ExtResource( 4 ) ]
+items = [ ExtResource( 3 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 11 ) ]
+num_towers = Vector2( 2, 3 )
+num_items = Vector2( 3, 4 )
+shtupidness = 0.0

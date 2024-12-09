@@ -1,0 +1,109 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Boss/TEO/TEO.gd" type="Script" id=1]
+[ext_resource path="res://Boss/TEO/sprites/litter.png" type="Texture" id=2]
+[ext_resource path="res://Boss/TEO/sprites/teo.png" type="Texture" id=3]
+[ext_resource path="res://Player/Hurtbox.gd" type="Script" id=4]
+[ext_resource path="res://Mobs/hit_flash_shader.tres" type="Material" id=5]
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:intro_anim_lerp")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "intro"
+length = 4.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:intro_anim_lerp")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.5, 0.8, 0.9, 1.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.6, 0.8, 1, 1.2, 3.5, 4.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ Vector2( -21, 1 ) ],
+"method": "spawn_carrier"
+}, {
+"args": [ Vector2( 16, 1 ) ],
+"method": "spawn_carrier"
+}, {
+"args": [ Vector2( -18, -5 ) ],
+"method": "spawn_carrier"
+}, {
+"args": [ Vector2( 19, -5 ) ],
+"method": "spawn_carrier"
+}, {
+"args": [  ],
+"method": "carrier_lift"
+}, {
+"args": [  ],
+"method": "end_intro"
+} ]
+}
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 2.23607
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 17.5, 11 )
+
+[node name="Boss" type="KinematicBody2D"]
+script = ExtResource( 1 )
+max_health = 48000.0
+boss_name = "Tiny Executive Officer"
+freeze_resist = 16.0
+stun_resist = 90.0
+intro_anim_lerp = 1.0
+
+[node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 5 )
+position = Vector2( 0, -8 )
+texture = ExtResource( 2 )
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 4 )
+anims/intro = SubResource( 3 )
+
+[node name="Officer" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 3 )
+hframes = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2( -0.5, -7 )
+shape = SubResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 16, 4 )

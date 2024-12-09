@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerInfo.gd" type="Script" id=1]
+[ext_resource path="res://Towers/Bumper/Scenes/BumperPreview.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/Bumper/Scenes/Bumper.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Towers/Bumper/Resources/ui_card.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 1 )
+name = "Bumper"
+shop_price = 15
+sell_price = 10
+rarity = 1.0
+description = "Reflects bullets that come into contact"
+id = 23
+cost = 20
+level_sell_bonus = 0
+target = "???"
+preview_instance = ExtResource( 2 )
+tower_instance = ExtResource( 3 )
+max_level = 1
+img_normal = ExtResource( 4 )

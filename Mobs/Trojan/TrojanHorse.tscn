@@ -1,0 +1,132 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Mobs/Trojan/TrojanHorse.gd" type="Script" id=1]
+[ext_resource path="res://Mobs/Trojan/TrojanHorse.png" type="Texture" id=2]
+[ext_resource path="res://Mobs/hit_flash_shader.tres" type="Material" id=3]
+
+[sub_resource type="Animation" id=6]
+resource_name = "Death"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 2, -11 ), Vector2( 3, -11 ), Vector2( 2, -11 ), Vector2( 3, -11 ), Vector2( 2, -11 ), Vector2( 3, -11 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 3, -11 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Run"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "Wait"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 6, 9 )
+
+[node name="TrojanHorse" type="Area2D"]
+script = ExtResource( 1 )
+max_health = 500.0
+base_speed = 7.0
+path_deviation = 2.0
+healthbar_width = 18.0
+aim_offset = Vector2( 1, -11 )
+h_flip_offset = Vector2( -4, 0 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 3 )
+position = Vector2( 3, -11 )
+texture = ExtResource( 2 )
+hframes = 4
+frame = 2
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+anims/Death = SubResource( 6 )
+anims/RESET = SubResource( 2 )
+anims/Run = SubResource( 3 )
+anims/Wait = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Body" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -9 )
+shape = SubResource( 4 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 0, -11 )
+
+[connection signal="animation_finished" from="Animator" to="." method="_on_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

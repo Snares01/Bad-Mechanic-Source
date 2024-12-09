@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Interface/Game/Consumables.gd" type="Script" id=2]
+
+[node name="Consumables" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+mouse_filter = 2
+script = ExtResource( 2 )
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_left = 310.0
+margin_top = 230.0
+margin_right = 310.0
+margin_bottom = 230.0
+mouse_filter = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8

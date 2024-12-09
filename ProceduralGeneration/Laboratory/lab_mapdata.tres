@@ -1,0 +1,50 @@
+[gd_resource type="Resource" load_steps=7 format=2]
+
+[ext_resource path="res://ProceduralGeneration/!Classes/MapData.gd" type="Script" id=1]
+[ext_resource path="res://ProceduralGeneration/Laboratory/lab_tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://ProceduralGeneration/Laboratory/Furniture/Scenes/Computer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ProceduralGeneration/Laboratory/Furniture/Scenes/TestTube.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ProceduralGeneration/Laboratory/Furniture/Scenes/LabTable.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ProceduralGeneration/Laboratory/Furniture/Scenes/Chalkboard.tscn" type="PackedScene" id=6]
+
+[resource]
+script = ExtResource( 1 )
+rarity = 1.0
+bendiness = 1.0
+min_segment_length = 5
+max_segment_length = 9
+path_length_target = 24
+space_around_path = 0.1
+min_normal_space_rects = 3
+max_normal_space_rects = 4
+min_normal_space_size = 6
+max_normal_space_size = 8
+normal_empty_rects = 0
+min_normal_empty_size = 2
+max_normal_empty_size = 4
+furniture = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ]
+min_furniture_num = 8
+max_furniture_num = 16
+tile_set = ExtResource( 2 )
+floor_tile = 0
+wall_tile = 5
+floor_partial_wall_tile = 7
+path_partial_wall_tile = 8
+path_tile = 1
+path_endcap_tile = 17
+path_outer_corner_tile = 2
+path_inner_corner_tile = 3
+path_inner_connect_tile = 18
+path_inner_support_tile = 4
+border_top = 16
+border_bottom = 11
+border_side = 13
+border_outer_upper_corner = 14
+border_outer_lower_corner = 12
+border_inner_upper_corner = 15
+border_inner_lower_corner = 10
+flip_floor_partial_wall_tile = 20
+flip_path_outer_corner_tile = -1
+x_flip_path_inner_corner_tile = 21
+y_flip_path_inner_corner_tile = 22
+x_y_flip_path_inner_corner_tile = 23

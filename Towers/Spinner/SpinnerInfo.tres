@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerInfo.gd" type="Script" id=1]
+[ext_resource path="res://Towers/Spinner/Resources/spinner_card.png" type="Texture" id=2]
+[ext_resource path="res://Towers/Spinner/Scenes/SpinnerPreview.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Towers/Spinner/Scenes/Spinner.tscn" type="PackedScene" id=4]
+
+[resource]
+script = ExtResource( 1 )
+name = "Spinner"
+shop_price = 50
+sell_price = 40
+rarity = 1.0
+description = "Crowds of mobs require crowds of bullets"
+id = 9
+cost = 60
+level_sell_bonus = 10
+target = "close"
+preview_instance = ExtResource( 3 )
+tower_instance = ExtResource( 4 )
+max_level = 12
+img_normal = ExtResource( 2 )

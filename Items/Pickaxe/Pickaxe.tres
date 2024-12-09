@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Items/!Classes/ConsumableInfo.gd" type="Script" id=1]
+[ext_resource path="res://Items/Pickaxe/Pickaxe.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Items/Pickaxe/pickaxe.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 1 )
+name = "Pickaxe"
+shop_price = 180
+sell_price = 50
+rarity = 1.0
+description = "Destroy walls in front of Joe"
+is_cooldown = false
+cooldown_duration = 10.0
+max_uses = 20
+img_ui = ExtResource( 3 )
+consume_effect = ExtResource( 2 )
+preview_effect = ExtResource( 2 )

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerInfo.gd" type="Script" id=1]
+[ext_resource path="res://Towers/ChickenCoopBombFactory/Scenes/ChickenCoopBombFactory.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/ChickenCoopBombFactory/Scenes/TowerPreview.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Towers/ChickenCoopBombFactory/Resources/ui_card.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 1 )
+name = "Chicken Coop Bomb Factory"
+shop_price = 300
+sell_price = 150
+rarity = 1.0
+description = "Chicken coop bomb factory"
+id = 13
+cost = 60
+level_sell_bonus = 20
+target = "close"
+preview_instance = ExtResource( 3 )
+tower_instance = ExtResource( 2 )
+max_level = 15
+img_normal = ExtResource( 4 )

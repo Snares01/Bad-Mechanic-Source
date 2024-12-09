@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerInfo.gd" type="Script" id=1]
+[ext_resource path="res://Towers/GunsWithBoxes/Scenes/GunsWithBoxes.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/GunsWithBoxes/Scenes/GunsPreview.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Towers/GunsWithBoxes/UI/guns_card_normal.png" type="Texture" id=7]
+
+[resource]
+script = ExtResource( 1 )
+name = "Guns On Boxes"
+shop_price = 20
+sell_price = 5
+rarity = 1.0
+description = "Made with only the highest quality boxes"
+id = 4
+cost = 50
+level_sell_bonus = 22
+target = "Random"
+preview_instance = ExtResource( 3 )
+tower_instance = ExtResource( 2 )
+max_level = 10
+img_normal = ExtResource( 7 )

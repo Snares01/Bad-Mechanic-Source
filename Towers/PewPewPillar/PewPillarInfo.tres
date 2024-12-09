@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerInfo.gd" type="Script" id=1]
+[ext_resource path="res://Towers/PewPewPillar/Scenes/Tower.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/PewPewPillar/Scenes/TowerPreview.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Towers/PewPewPillar/Resources/pillar_card_normal.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 1 )
+name = "Pew Pew Pillar"
+shop_price = 10
+sell_price = 10
+rarity = 1.0
+description = "Strong but inaccurate"
+id = 6
+cost = 50
+level_sell_bonus = 7
+target = "First"
+preview_instance = ExtResource( 3 )
+tower_instance = ExtResource( 2 )
+max_level = 8
+img_normal = ExtResource( 4 )

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Items/!Classes/ConsumableInfo.gd" type="Script" id=1]
+[ext_resource path="res://Items/Freeze/snowflake.png" type="Texture" id=2]
+[ext_resource path="res://Items/Freeze/FreezeEffect.tscn" type="PackedScene" id=3]
+
+[resource]
+script = ExtResource( 1 )
+name = "Special Snowflake"
+shop_price = 50
+sell_price = 25
+rarity = 1.0
+description = "Freezes enemies around you"
+is_cooldown = true
+cooldown_duration = 7.5
+max_uses = -1
+img_ui = ExtResource( 2 )
+consume_effect = ExtResource( 3 )
+preview_effect = ExtResource( 3 )

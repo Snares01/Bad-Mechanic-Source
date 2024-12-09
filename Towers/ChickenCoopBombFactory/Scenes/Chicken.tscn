@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Towers/ChickenCoopBombFactory/Scenes/Chicken.gd" type="Script" id=1]
+[ext_resource path="res://Towers/ChickenCoopBombFactory/Resources/chickens.png" type="Texture" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -6 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "hop"
+length = 0.6
+loop = true
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.025, 0.175, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, -7 ), Vector2( 0, -8 ), Vector2( 0, -7 ), Vector2( 0, -6 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "start_hop"
+}, {
+"args": [  ],
+"method": "end_hop"
+} ]
+}
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 6.0
+
+[node name="Chicken" type="Area2D"]
+script = ExtResource( 1 )
+id = 13
+range_offset = Vector2( 0, -5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -5 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -6 )
+texture = ExtResource( 2 )
+hframes = 3
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 4 )
+anims/hop = SubResource( 2 )
+
+[node name="Explode" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Explode"]
+position = Vector2( 0, -6 )
+shape = SubResource( 3 )
+
+[connection signal="area_entered" from="Explode" to="." method="explode"]

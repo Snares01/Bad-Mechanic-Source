@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerInfo.gd" type="Script" id=1]
+[ext_resource path="res://Towers/Orbiter/Scenes/OrbiterPreview.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/Orbiter/Scenes/Orbiter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Towers/Orbiter/Resources/ui_card.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 1 )
+name = "Orb Orbiter"
+shop_price = 80
+sell_price = 45
+rarity = 1.0
+description = "Upgrade for more orbs"
+id = 22
+cost = 60
+level_sell_bonus = 16
+target = "???"
+preview_instance = ExtResource( 2 )
+tower_instance = ExtResource( 3 )
+max_level = 6
+img_normal = ExtResource( 4 )

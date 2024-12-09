@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerInfo.gd" type="Script" id=1]
+[ext_resource path="res://Towers/PainRay/Scenes/PainRay.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/PainRay/Scenes/PainRayPreview.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Towers/PainRay/Resources/ui_card.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 1 )
+name = "Pain Ray"
+shop_price = 200
+sell_price = 80
+rarity = 1.0
+description = "Can deliver pain to multiple targets"
+id = 17
+cost = 60
+level_sell_bonus = 12
+target = "first"
+preview_instance = ExtResource( 3 )
+tower_instance = ExtResource( 2 )
+max_level = 20
+img_normal = ExtResource( 4 )

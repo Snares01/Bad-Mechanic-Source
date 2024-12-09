@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Towers/BrickHouse/Scenes/Brick.gd" type="Script" id=1]
+[ext_resource path="res://Towers/!Resources/bulletAtlas.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 16, 4, 4 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 2.0
+
+[node name="Brick" type="Sprite"]
+texture = SubResource( 1 )
+script = ExtResource( 1 )
+hitbox_shape = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.15
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="flip_around"]

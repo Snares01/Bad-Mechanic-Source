@@ -1,0 +1,195 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Mobs/Zombie Chicken/ZombieChicken.gd" type="Script" id=1]
+[ext_resource path="res://Mobs/Zombie Chicken/ZombieChicken.png" type="Texture" id=2]
+[ext_resource path="res://Mobs/hit_flash_shader.tres" type="Material" id=3]
+[ext_resource path="res://Mobs/Zombie Chicken/Egg.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Mobs/Zombie Chicken/Feather.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 6.0
+
+[sub_resource type="Animation" id=3]
+resource_name = "Hop"
+length = 0.2
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.025, 0.175, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, -7 ), Vector2( 1, -8 ), Vector2( 1, -7 ), Vector2( 1, -6 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, -6 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Lay"
+length = 1.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "lay"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, -6 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Peck"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 1, -6 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, -6 ) ]
+}
+
+[node name="Chicken" type="Area2D"]
+script = ExtResource( 1 )
+max_health = 45.0
+base_speed = 0.0
+path_deviation = 8.0
+healthbar_width = 12.0
+aim_offset = Vector2( 0, -5.5 )
+h_flip_offset = Vector2( -2, 0 )
+poison_resist = 3.0
+egg = ExtResource( 4 )
+feather = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 3 )
+position = Vector2( 1, -6 )
+texture = ExtResource( 2 )
+hframes = 3
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -6 )
+shape = SubResource( 8 )
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+anims/Hop = SubResource( 3 )
+anims/Idle = SubResource( 4 )
+anims/Lay = SubResource( 7 )
+anims/Peck = SubResource( 6 )
+anims/RESET = SubResource( 5 )
+
+[connection signal="animation_finished" from="Animator" to="." method="_on_animation_finished"]

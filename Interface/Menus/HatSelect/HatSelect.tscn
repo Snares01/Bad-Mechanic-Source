@@ -1,0 +1,302 @@
+[gd_scene load_steps=38 format=2]
+
+[ext_resource path="res://Interface/Theme_Main.tres" type="Theme" id=1]
+[ext_resource path="res://Interface/Assets/ButtonSounds.gd" type="Script" id=2]
+[ext_resource path="res://Interface/Assets/Retro6.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Interface/Menus/HatSelect/HatSelect.gd" type="Script" id=4]
+[ext_resource path="res://Interface/Menus/HatSelect/HatButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hats/Football/FootballHelmet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Hats/TopHat/TopHat.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Hats/CubanLink/CubanLinks.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Hats/Football/locked_btn.png" type="Texture" id=9]
+[ext_resource path="res://Hats/Football/unlocked_btn.png" type="Texture" id=10]
+[ext_resource path="res://Hats/CubanLink/locked_btn.png" type="Texture" id=11]
+[ext_resource path="res://Hats/TopHat/locked_btn.png" type="Texture" id=12]
+[ext_resource path="res://Hats/TopHat/unlocked_btn.png" type="Texture" id=13]
+[ext_resource path="res://Hats/CubanLink/unlocked_btn.png" type="Texture" id=14]
+[ext_resource path="res://Hats/Monocle/locked_btn.png" type="Texture" id=15]
+[ext_resource path="res://Hats/Monocle/unlocked_btn.png" type="Texture" id=16]
+[ext_resource path="res://Hats/Monocle/Monocle.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Hats/FryingPan/FryingPan.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Hats/FryingPan/locked_btn.png" type="Texture" id=19]
+[ext_resource path="res://Hats/FryingPan/unlocked_btn.png" type="Texture" id=20]
+[ext_resource path="res://Hats/JestersHat/JesterHat.tscn" type="PackedScene" id=21]
+[ext_resource path="res://Hats/JestersHat/locked_btn.png" type="Texture" id=22]
+[ext_resource path="res://Hats/JestersHat/unlocked_btn.png" type="Texture" id=23]
+[ext_resource path="res://Hats/HardHat/unlocked_btn.png" type="Texture" id=24]
+[ext_resource path="res://Hats/HardHat/locked_btn.png" type="Texture" id=25]
+[ext_resource path="res://Hats/HardHat/HardHat.tscn" type="PackedScene" id=26]
+[ext_resource path="res://Interface/Assets/retro-pixel-arcade.ttf" type="DynamicFontData" id=27]
+[ext_resource path="res://Interface/Main Menu/theme_main_menu.tres" type="Theme" id=28]
+[ext_resource path="res://Hats/BunnyEars/locked.png" type="Texture" id=29]
+[ext_resource path="res://Hats/BunnyEars/unlocked.png" type="Texture" id=30]
+[ext_resource path="res://Hats/BunnyEars/BunnyEars.tscn" type="PackedScene" id=31]
+[ext_resource path="res://Hats/RedCape/Cape.tscn" type="PackedScene" id=32]
+[ext_resource path="res://Hats/RedCape/unlocked.png" type="Texture" id=33]
+[ext_resource path="res://Hats/RedCape/locked.png" type="Texture" id=34]
+
+[sub_resource type="ButtonGroup" id=5]
+
+[sub_resource type="DynamicFont" id=6]
+size = 8
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 27 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 3 )
+
+[node name="HatSelect" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+mouse_filter = 1
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+
+[node name="VBox" type="VBoxContainer" parent="."]
+margin_right = 300.0
+margin_bottom = 220.0
+custom_constants/separation = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="VBox"]
+margin_right = 300.0
+margin_bottom = 138.0
+mouse_filter = 1
+size_flags_vertical = 3
+size_flags_stretch_ratio = 3.0
+
+[node name="VBox" type="VBoxContainer" parent="VBox/PanelContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 295.0
+margin_bottom = 132.0
+
+[node name="HatGrid" type="GridContainer" parent="VBox/PanelContainer/VBox"]
+unique_name_in_owner = true
+margin_left = 76.0
+margin_right = 213.0
+margin_bottom = 55.0
+size_flags_horizontal = 4
+size_flags_vertical = 5
+size_flags_stretch_ratio = 3.0
+theme = ExtResource( 28 )
+columns = 5
+
+[node name="Empty" parent="VBox/PanelContainer/VBox/HatGrid" instance=ExtResource( 5 )]
+margin_right = 24.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 24, 24 )
+theme = ExtResource( 28 )
+icon = null
+hat_name = "Empty"
+hat_description = "* no hat no problem"
+
+[node name="Football" parent="VBox/PanelContainer/VBox/HatGrid" instance=ExtResource( 5 )]
+margin_left = 28.0
+margin_right = 52.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 24, 24 )
+theme = null
+group = SubResource( 5 )
+icon = ExtResource( 10 )
+achievement = "HT_FOOTBALL_HELMET"
+hat = ExtResource( 6 )
+hat_name = "Football Helmet"
+unlocked_icon = ExtResource( 10 )
+locked_icon = ExtResource( 9 )
+hat_description = "* Increase damage resistance
+* Decrease build range"
+unlock_requirement = "Complete level 1"
+
+[node name="FryingPan" parent="VBox/PanelContainer/VBox/HatGrid" instance=ExtResource( 5 )]
+margin_left = 56.0
+margin_right = 81.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 24, 24 )
+theme = null
+icon = ExtResource( 20 )
+achievement = "HT_FRYING_PAN"
+hat = ExtResource( 18 )
+hat_name = "Frying Pan"
+unlocked_icon = ExtResource( 20 )
+locked_icon = ExtResource( 19 )
+hat_description = "* Bullets deal more damage
+* Cash is harder to pick up"
+unlock_requirement = "Acquire an egg"
+
+[node name="TopHat" parent="VBox/PanelContainer/VBox/HatGrid" instance=ExtResource( 5 )]
+margin_left = 85.0
+margin_right = 109.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 24, 24 )
+theme = null
+icon = ExtResource( 13 )
+achievement = "HT_TOP_HAT"
+hat = ExtResource( 7 )
+hat_name = "Top Hat"
+unlocked_icon = ExtResource( 13 )
+locked_icon = ExtResource( 12 )
+hat_description = "* Gain 100 bonus starting cash per level
+* Become easier to hit"
+unlock_requirement = "Complete level 1 without dropping any cash"
+
+[node name="CubanLink" parent="VBox/PanelContainer/VBox/HatGrid" instance=ExtResource( 5 )]
+margin_left = 113.0
+margin_right = 137.0
+margin_bottom = 26.0
+rect_min_size = Vector2( 24, 24 )
+theme = null
+icon = ExtResource( 14 )
+achievement = "HT_CUBAN_LINK"
+hat = ExtResource( 8 )
+hat_name = "Cuban Link"
+unlocked_icon = ExtResource( 14 )
+locked_icon = ExtResource( 11 )
+hat_description = "* Increase intermission skip bonus
+* Decrease intermission time"
+unlock_requirement = "Skip 3 minutes of intermission in one run"
+
+[node name="Monocle" parent="VBox/PanelContainer/VBox/HatGrid" instance=ExtResource( 5 )]
+margin_top = 30.0
+margin_right = 24.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 24, 24 )
+theme = null
+icon = ExtResource( 16 )
+achievement = "HT_MONOCLE"
+hat = ExtResource( 17 )
+hat_name = "Monocle"
+unlocked_icon = ExtResource( 16 )
+locked_icon = ExtResource( 15 )
+hat_description = "* Mobs drop more cash
+* Missed cash deals damage"
+unlock_requirement = "Spend $400 in the shop"
+
+[node name="JestersHat" parent="VBox/PanelContainer/VBox/HatGrid" instance=ExtResource( 5 )]
+margin_left = 28.0
+margin_top = 30.0
+margin_right = 52.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 24, 24 )
+theme = null
+icon = ExtResource( 23 )
+achievement = "HT_JESTER"
+hat = ExtResource( 21 )
+hat_name = "Jester's Hat"
+unlocked_icon = ExtResource( 23 )
+locked_icon = ExtResource( 22 )
+hat_description = "* Item prices are mischievous"
+unlock_requirement = "Sell $400 worth of items in the shop"
+
+[node name="BunnyEars" parent="VBox/PanelContainer/VBox/HatGrid" instance=ExtResource( 5 )]
+margin_left = 56.0
+margin_top = 30.0
+margin_right = 81.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 24, 24 )
+theme = null
+icon = ExtResource( 30 )
+achievement = "HT_BUNNY"
+hat = ExtResource( 31 )
+hat_name = "Bunny Ears"
+unlocked_icon = ExtResource( 30 )
+locked_icon = ExtResource( 29 )
+hat_description = "* Faster movement speed
+* Decrease damage resistance"
+unlock_requirement = "Reach level 5"
+
+[node name="HardHat" parent="VBox/PanelContainer/VBox/HatGrid" instance=ExtResource( 5 )]
+margin_left = 85.0
+margin_top = 30.0
+margin_right = 109.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 24, 24 )
+theme = null
+icon = ExtResource( 24 )
+achievement = "HT_HARD_HAT"
+hat = ExtResource( 26 )
+hat_name = "Hard Hat"
+unlocked_icon = ExtResource( 24 )
+locked_icon = ExtResource( 25 )
+hat_description = "* Better tower upgrades
+* Mobs explode more violently"
+unlock_requirement = "Beat the game"
+
+[node name="RedCape" parent="VBox/PanelContainer/VBox/HatGrid" instance=ExtResource( 5 )]
+margin_left = 113.0
+margin_top = 30.0
+margin_right = 137.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 24, 24 )
+theme = null
+icon = ExtResource( 33 )
+achievement = "HT_CAPE"
+hat = ExtResource( 32 )
+hat_name = "Red Cape"
+unlocked_icon = ExtResource( 33 )
+locked_icon = ExtResource( 34 )
+hat_description = "* Cash heals when collected
+* Health slowly drains"
+unlock_requirement = "Beat the game without selling anything"
+
+[node name="HardToggle" type="Button" parent="VBox/PanelContainer/VBox"]
+unique_name_in_owner = true
+visible = false
+margin_left = 124.0
+margin_top = 50.0
+margin_right = 166.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 42, 21 )
+focus_mode = 0
+size_flags_horizontal = 4
+toggle_mode = true
+action_mode = 0
+enabled_focus_mode = 0
+text = "HELL"
+
+[node name="VBox" type="VBoxContainer" parent="VBox"]
+margin_top = 143.0
+margin_right = 300.0
+margin_bottom = 220.0
+size_flags_vertical = 3
+
+[node name="LblName" type="Label" parent="VBox/VBox"]
+unique_name_in_owner = true
+margin_right = 300.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 6 )
+text = "Select a hat"
+align = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="VBox/VBox"]
+margin_top = 16.0
+margin_right = 300.0
+margin_bottom = 57.0
+size_flags_vertical = 3
+
+[node name="LblDesc" type="Label" parent="VBox/VBox/PanelContainer"]
+unique_name_in_owner = true
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 295.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 0, 30 )
+size_flags_vertical = 2
+custom_fonts/font = SubResource( 3 )
+align = 1
+
+[node name="BtnBack" type="Button" parent="VBox/VBox"]
+unique_name_in_owner = true
+margin_top = 61.0
+margin_right = 300.0
+margin_bottom = 77.0
+size_flags_vertical = 4
+text = " Select "
+script = ExtResource( 2 )
+
+[connection signal="toggled" from="VBox/PanelContainer/VBox/HardToggle" to="." method="_on_hard_mode_toggled"]
+[connection signal="pressed" from="VBox/VBox/BtnBack" to="." method="_on_BtnBack_pressed"]

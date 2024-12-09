@@ -1,0 +1,167 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Interface/Game/Assets/xp_progress.png" type="Texture" id=1]
+[ext_resource path="res://Interface/Game/Assets/xp_under.png" type="Texture" id=2]
+[ext_resource path="res://Interface/Game/Assets/health_progress.png" type="Texture" id=3]
+[ext_resource path="res://Interface/Game/Assets/health_under.png" type="Texture" id=4]
+[ext_resource path="res://Interface/Theme_Main.tres" type="Theme" id=5]
+[ext_resource path="res://Interface/Game/PlayerInfoUI.gd" type="Script" id=6]
+[ext_resource path="res://Audio/Sound Effects/CashTick.wav" type="AudioStream" id=7]
+[ext_resource path="res://Interface/Game/Assets/flash_progress.png" type="Texture" id=8]
+[ext_resource path="res://Interface/Game/Assets/level_up_sfx.wav" type="AudioStream" id=9]
+[ext_resource path="res://Interface/Assets/SinsGold.ttf" type="DynamicFontData" id=10]
+
+[sub_resource type="DynamicFont" id=4]
+use_mipmaps = true
+extra_spacing_top = -14
+font_data = ExtResource( 10 )
+
+[sub_resource type="AudioStreamRandomPitch" id=1]
+audio_stream = ExtResource( 7 )
+random_pitch = 1.02
+
+[sub_resource type="Animation" id=2]
+resource_name = "Increase"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer/IncreaseEffect:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 36 ), Vector2( 0, 45 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBoxContainer/IncreaseEffect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer/IncreaseEffect:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 66 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBoxContainer/IncreaseEffect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="PlayerInfoUI" type="MarginContainer"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 40.0
+margin_bottom = 40.0
+mouse_filter = 2
+script = ExtResource( 6 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 60.0
+margin_bottom = 58.0
+mouse_filter = 2
+
+[node name="VBoxHealthBar" type="VBoxContainer" parent="VBoxContainer"]
+margin_right = 60.0
+margin_bottom = 22.0
+custom_constants/separation = -14
+
+[node name="FlashBar" type="TextureProgress" parent="VBoxContainer/VBoxHealthBar"]
+unique_name_in_owner = true
+modulate = Color( 0.537255, 1, 0.564706, 1 )
+margin_right = 60.0
+margin_bottom = 14.0
+step = 0.0
+value = 100.0
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 8 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxHealthBar"]
+margin_right = 60.0
+margin_bottom = 22.0
+custom_constants/separation = -1
+
+[node name="HealthBar" type="TextureProgress" parent="VBoxContainer/VBoxHealthBar/VBoxContainer"]
+unique_name_in_owner = true
+margin_right = 60.0
+margin_bottom = 14.0
+step = 0.0
+value = 50.0
+texture_progress = ExtResource( 3 )
+
+[node name="CurrentHealth" type="Label" parent="VBoxContainer/VBoxHealthBar/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 13.0
+margin_right = 60.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 0, 1 )
+custom_colors/font_color = Color( 0.0941176, 0.0784314, 0.145098, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "10"
+align = 1
+
+[node name="ExpBar" type="TextureProgress" parent="VBoxContainer/VBoxHealthBar/VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 13.0
+margin_right = 60.0
+margin_bottom = 22.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 1 )
+
+[node name="Cash" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 26.0
+margin_right = 60.0
+margin_bottom = 40.0
+theme = ExtResource( 5 )
+text = "$0"
+
+[node name="IncreaseEffect" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+margin_top = 66.0
+margin_right = 60.0
+margin_bottom = 80.0
+theme = ExtResource( 5 )
+text = "+10"
+autowrap = true
+
+[node name="SmallCashSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource( 1 )
+volume_db = -13.0
+bus = "SFX"
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+anims/Increase = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+
+[node name="LevelUpSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -14.0
+bus = "UI"

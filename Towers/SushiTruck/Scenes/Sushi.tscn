@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Towers/SushiTruck/Scenes/Sushi.gd" type="Script" id=1]
+[ext_resource path="res://Towers/!Resources/bulletAtlas.png" type="Texture" id=2]
+
+[sub_resource type="AtlasTexture" id=1]
+resource_local_to_scene = true
+atlas = ExtResource( 2 )
+region = Rect2( 5, 29, 5, 3 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 1.5
+
+[node name="Bullet" type="Sprite"]
+texture = SubResource( 1 )
+script = ExtResource( 1 )
+hitbox_shape = SubResource( 2 )

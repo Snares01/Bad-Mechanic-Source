@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Items/Energy Drink/Energy.png" type="Texture" id=1]
+[ext_resource path="res://Items/!Classes/ConsumableInfo.gd" type="Script" id=2]
+[ext_resource path="res://Items/Energy Drink/EnergyDrink.tscn" type="PackedScene" id=3]
+
+[resource]
+script = ExtResource( 2 )
+name = "Energy Drink"
+shop_price = 20
+sell_price = 10
+rarity = 1.0
+description = "Provides a speed boost - drink as fast as you'd like"
+is_cooldown = false
+cooldown_duration = 10.0
+max_uses = 5
+img_ui = ExtResource( 1 )
+consume_effect = ExtResource( 3 )
+preview_effect = ExtResource( 3 )

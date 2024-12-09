@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Items/!Classes/GameModifierInfo.gd" type="Script" id=1]
+[ext_resource path="res://Items/ProtectiveUnderpants/underpants.png" type="Texture" id=2]
+[ext_resource path="res://Items/ProtectiveUnderpants/UnderpantEffect.tscn" type="PackedScene" id=3]
+
+[resource]
+script = ExtResource( 1 )
+name = "Protective Underpants"
+shop_price = 60
+sell_price = 30
+rarity = 1.25
+description = "Provides poison resistance and +50 max HP"
+preview_sprite = ExtResource( 2 )
+effect = ExtResource( 3 )
+repeating = true

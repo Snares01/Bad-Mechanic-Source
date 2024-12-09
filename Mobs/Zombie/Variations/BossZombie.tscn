@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Mobs/Zombie/Zombie.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform vec4 flash_col : hint_color = vec4(1.0);
+uniform float flash : hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	vec4 color = texture(TEXTURE, UV);
+	color.rgb = mix(color.rgb, flash_col.rgb, flash);
+	COLOR = color;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = SubResource( 1 )
+shader_param/flash_col = Color( 1, 1, 1, 1 )
+shader_param/flash = 0.0
+
+[node name="BossZombie" instance=ExtResource( 1 )]
+modulate = Color( 1, 0, 0, 1 )
+scale = Vector2( 2, 2 )
+max_health = 7000.0
+speed = 8.0
+xp_multiplier = 0.7
+aim_offset = Vector2( 0, -14 )
+run_anim_speed = 0.45
+cash_amount = 35
+cash_radius = 24.0
+
+[node name="Sprite" parent="." index="0"]
+material = SubResource( 2 )

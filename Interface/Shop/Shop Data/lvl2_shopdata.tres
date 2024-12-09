@@ -1,0 +1,25 @@
+[gd_resource type="Resource" load_steps=16 format=2]
+
+[ext_resource path="res://Interface/Shop/Shop Data/ShopData.gd" type="Script" id=1]
+[ext_resource path="res://Towers/DemoScatter/DemoScatterInfo.tres" type="Resource" id=2]
+[ext_resource path="res://Towers/Spinner/SpinnerInfo.tres" type="Resource" id=3]
+[ext_resource path="res://Towers/ArcherTurret/ArcherInfo.tres" type="Resource" id=4]
+[ext_resource path="res://Items/KarateClasses/KarateClasses.tres" type="Resource" id=5]
+[ext_resource path="res://Items/VacationDays/VacationDays.tres" type="Resource" id=6]
+[ext_resource path="res://Items/Health Potion/HealthPotion.tres" type="Resource" id=7]
+[ext_resource path="res://Items/Sandwiches/TurkeySandwich.tres" type="Resource" id=8]
+[ext_resource path="res://Towers/BrickHouse/BrickHouseInfo.tres" type="Resource" id=9]
+[ext_resource path="res://Items/ProtectiveUnderpants/ProtectiveUnderpants.tres" type="Resource" id=10]
+[ext_resource path="res://Items/Reroll/RerollInfo.tres" type="Resource" id=11]
+[ext_resource path="res://Towers/GunsWithBoxes/GunsWithBoxesInfo.tres" type="Resource" id=12]
+[ext_resource path="res://Towers/PoisonDartPillar/PoisonPillarInfo.tres" type="Resource" id=13]
+[ext_resource path="res://Items/SecurityBlanket/SecurityBlanket.tres" type="Resource" id=14]
+[ext_resource path="res://Towers/MoneyPrinter/PrinterInfo.tres" type="Resource" id=15]
+
+[resource]
+script = ExtResource( 1 )
+towers = [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 15 ), ExtResource( 2 ), ExtResource( 9 ) ]
+items = [ ExtResource( 8 ), ExtResource( 11 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 5 ), ExtResource( 14 ), ExtResource( 6 ) ]
+num_towers = Vector2( 3, 3 )
+num_items = Vector2( 3, 3 )
+shtupidness = 0.0

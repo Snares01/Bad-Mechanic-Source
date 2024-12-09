@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerInfo.gd" type="Script" id=1]
+[ext_resource path="res://Towers/BrickHouse/Scenes/BrickHousePreview.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/BrickHouse/Scenes/BrickHouse.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Towers/BrickHouse/Resources/ui_card.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 1 )
+name = "Brick House"
+shop_price = 40
+sell_price = 25
+rarity = 1.0
+description = "Throws bricks that stun enemies"
+id = 19
+cost = 50
+level_sell_bonus = 10
+target = "strong"
+preview_instance = ExtResource( 2 )
+tower_instance = ExtResource( 3 )
+max_level = 6
+img_normal = ExtResource( 4 )

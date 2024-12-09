@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerInfo.gd" type="Script" id=1]
+[ext_resource path="res://Towers/DemoSniper/Main Scenes/SniperPreview.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/DemoSniper/UI/sniper_card_normal.png" type="Texture" id=5]
+[ext_resource path="res://Towers/DemoSniper/Main Scenes/Sniper.tscn" type="PackedScene" id=7]
+
+[resource]
+script = ExtResource( 1 )
+name = "Sniper"
+shop_price = 20
+sell_price = 15
+rarity = 1.0
+description = "Shoots high damage laser beams"
+id = 2
+cost = 100
+level_sell_bonus = 8
+target = "strong"
+preview_instance = ExtResource( 2 )
+tower_instance = ExtResource( 7 )
+max_level = 16
+img_normal = ExtResource( 5 )

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Interface/Menus/HatSelect/HatButton.gd" type="Script" id=1]
+[ext_resource path="res://Interface/Theme_Main.tres" type="Theme" id=2]
+[ext_resource path="res://purrlaceholder.png" type="Texture" id=3]
+
+[node name="HatButton" type="Button"]
+margin_right = 12.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 21, 21 )
+focus_mode = 0
+theme = ExtResource( 2 )
+toggle_mode = true
+action_mode = 0
+enabled_focus_mode = 0
+icon = ExtResource( 3 )
+icon_align = 1
+script = ExtResource( 1 )

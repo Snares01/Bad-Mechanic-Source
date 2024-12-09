@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=11 format=2]
+
+[ext_resource path="res://Interface/Shop/Shop Data/ShopData.gd" type="Script" id=1]
+[ext_resource path="res://Towers/PainRay/PainRayInfo.tres" type="Resource" id=2]
+[ext_resource path="res://Items/Sandwiches/GrilledCheese.tres" type="Resource" id=3]
+[ext_resource path="res://Towers/Boomerang/BoomerangInfo.tres" type="Resource" id=4]
+[ext_resource path="res://Items/GoldenSkip/GoldenSkipButton.tres" type="Resource" id=5]
+[ext_resource path="res://Items/Reflector/ReflectorInfo.tres" type="Resource" id=6]
+[ext_resource path="res://Towers/ParticleCollider/ParticleCollider.tres" type="Resource" id=7]
+[ext_resource path="res://Items/Reroll/RerollInfo.tres" type="Resource" id=8]
+[ext_resource path="res://Items/ProtectiveCup/ProtectiveCup.tres" type="Resource" id=11]
+[ext_resource path="res://Items/BombBag/BombBagInfo.tres" type="Resource" id=12]
+
+[resource]
+script = ExtResource( 1 )
+towers = [ ExtResource( 2 ), ExtResource( 4 ), ExtResource( 7 ) ]
+items = [ ExtResource( 3 ), ExtResource( 8 ), ExtResource( 12 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 6 ) ]
+num_towers = Vector2( 2, 2 )
+num_items = Vector2( 3, 3 )
+shtupidness = 0.0

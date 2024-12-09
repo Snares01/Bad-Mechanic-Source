@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerInfo.gd" type="Script" id=1]
+[ext_resource path="res://Towers/ArcherTurret/Scenes/ArcherTurret.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/ArcherTurret/Scenes/ArcherPreview.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Towers/ArcherTurret/Resources/ui_card.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 1 )
+name = "Archer Turret"
+shop_price = 50
+sell_price = 30
+rarity = 1.0
+description = "Shoots high damage arrows at mobs"
+id = 7
+cost = 120
+level_sell_bonus = 10
+target = "strong"
+preview_instance = ExtResource( 3 )
+tower_instance = ExtResource( 2 )
+max_level = 15
+img_normal = ExtResource( 4 )

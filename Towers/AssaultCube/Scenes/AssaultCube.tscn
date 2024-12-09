@@ -1,0 +1,251 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Towers/AssaultCube/Scenes/AssaultCube.gd" type="Script" id=1]
+[ext_resource path="res://Towers/AssaultCube/Resources/assault_cube.png" type="Texture" id=2]
+[ext_resource path="res://Towers/DemoRifle/Resources/RifleBullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Towers/AssaultCube/Resources/AssaultBullet.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 4.5 )
+
+[sub_resource type="Animation" id=5]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "shoot_down"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 0, 1, 2, 3, 4, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ Vector2( 0, -5.5 ), true ],
+"method": "shoot"
+}, {
+"args": [ Vector2( -6.5, -7.5 ), false ],
+"method": "shoot"
+}, {
+"args": [ Vector2( -6.5, -3.5 ), false ],
+"method": "shoot"
+}, {
+"args": [ Vector2( 6.5, -7.5 ), false ],
+"method": "shoot"
+}, {
+"args": [ Vector2( 6.5, -3.5 ), false ],
+"method": "shoot"
+} ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "shoot_left"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ Vector2( -9.5, -9 ), true ],
+"method": "shoot"
+}, {
+"args": [ Vector2( -9.5, -14 ), false ],
+"method": "shoot"
+}, {
+"args": [ Vector2( -9.5, -9 ), false ],
+"method": "shoot"
+}, {
+"args": [ Vector2( -9.5, -12 ), false ],
+"method": "shoot"
+}, {
+"args": [ Vector2( -9.5, -5 ), false ],
+"method": "shoot"
+} ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "shoot_right"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ Vector2( 9.5, -9 ), true ],
+"method": "shoot"
+}, {
+"args": [ Vector2( 9.5, -14 ), false ],
+"method": "shoot"
+}, {
+"args": [ Vector2( 9.5, -9 ), false ],
+"method": "shoot"
+}, {
+"args": [ Vector2( 9.5, -12 ), false ],
+"method": "shoot"
+}, {
+"args": [ Vector2( 9.5, -5 ), false ],
+"method": "shoot"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "shoot_up"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ Vector2( 0, -13.5 ), true ],
+"method": "shoot"
+}, {
+"args": [ Vector2( -6.5, -15.5 ), false ],
+"method": "shoot"
+}, {
+"args": [ Vector2( -6.5, -11.5 ), false ],
+"method": "shoot"
+}, {
+"args": [ Vector2( 6.5, -15.5 ), false ],
+"method": "shoot"
+}, {
+"args": [ Vector2( 6.5, -11.5 ), false ],
+"method": "shoot"
+} ]
+}
+
+[node name="AssaultCube" type="Area2D"]
+script = ExtResource( 1 )
+id = 24
+range_offset = Vector2( 0, -8 )
+small_bullet = ExtResource( 3 )
+big_bullet = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -8 )
+texture = ExtResource( 2 )
+hframes = 6
+frame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 0, -8 )
+shape = SubResource( 1 )
+
+[node name="NoBuild" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NoBuild"]
+visible = false
+position = Vector2( 0, -3.5 )
+shape = SubResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( -9.5, -5 )
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 5 )
+anims/idle = SubResource( 3 )
+anims/shoot_down = SubResource( 4 )
+anims/shoot_left = SubResource( 7 )
+anims/shoot_right = SubResource( 8 )
+anims/shoot_up = SubResource( 6 )
+
+[connection signal="animation_finished" from="Animator" to="." method="_on_animation_finished"]

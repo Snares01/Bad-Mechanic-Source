@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerInfo.gd" type="Script" id=1]
+[ext_resource path="res://Towers/SushiTruck/Scenes/SushiTruckPreview.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/SushiTruck/Scenes/SushiTruck.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Towers/SushiTruck/Resources/ui_card.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 1 )
+name = "Sushi Truck"
+shop_price = 60
+sell_price = 50
+rarity = 1.0
+description = "We avoid health inspections"
+id = 20
+cost = 60
+level_sell_bonus = 7
+target = "strong"
+preview_instance = ExtResource( 2 )
+tower_instance = ExtResource( 3 )
+max_level = 10
+img_normal = ExtResource( 4 )

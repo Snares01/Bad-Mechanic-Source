@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Mobs/Zombie Chicken/Egg.gd" type="Script" id=1]
+[ext_resource path="res://Mobs/Zombie Chicken/Eggs.png" type="Texture" id=2]
+[ext_resource path="res://Mobs/hit_flash_shader.tres" type="Material" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2, 3 )
+
+[node name="Egg" type="Area2D"]
+visible = false
+script = ExtResource( 1 )
+max_health = 2.5
+base_speed = 0.0
+aim_offset = Vector2( 0, -3 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 3 )
+texture = ExtResource( 2 )
+offset = Vector2( 0, -3 )
+hframes = 3
+frame = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -3 )
+shape = SubResource( 1 )

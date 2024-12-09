@@ -1,0 +1,129 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Mobs/PortalDemon/DemonChicken/DemonChicken.gd" type="Script" id=1]
+[ext_resource path="res://Mobs/PortalDemon/DemonChicken/demon_chicken.png" type="Texture" id=2]
+[ext_resource path="res://Boss/DemoBoss/boss_hitbox.gd" type="Script" id=3]
+[ext_resource path="res://Player/Hurtbox.gd" type="Script" id=4]
+[ext_resource path="res://Mobs/hit_flash_shader.tres" type="Material" id=5]
+
+[sub_resource type="Animation" id=6]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, -8 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "hop"
+length = 0.3
+step = 0.025
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.025, 0.175, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, -7 ), Vector2( 1, -8 ), Vector2( 1, -7 ), Vector2( 1, -6 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "end_hop"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "intro"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, -6 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 2.0
+height = 2.0
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.12311
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 6.5
+
+[node name="DemonChicken" type="KinematicBody2D"]
+script = ExtResource( 1 )
+max_health = 200.0
+freeze_resist = 50.0
+poison_resist = 3.0
+
+[node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 5 )
+position = Vector2( 1, -8 )
+texture = ExtResource( 2 )
+hframes = 3
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 6 )
+anims/hop = SubResource( 3 )
+anims/intro = SubResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.5, -1 )
+rotation = 1.5708
+shape = SubResource( 4 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource( 3 )
+damage = 300.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 0, -5 )
+shape = SubResource( 1 )
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2( -0.5, -6 )
+shape = SubResource( 5 )

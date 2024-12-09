@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Items/!Classes/ConsumableInfo.gd" type="Script" id=1]
+[ext_resource path="res://Items/Reflector/ReflectorEffect.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Items/Reflector/icon.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 1 )
+name = "Reflector"
+shop_price = 120
+sell_price = 60
+rarity = 10.0
+description = "Reflects nearby bullets away from you"
+is_cooldown = true
+cooldown_duration = 2.75
+max_uses = -1
+img_ui = ExtResource( 3 )
+consume_effect = ExtResource( 2 )
+preview_effect = ExtResource( 2 )

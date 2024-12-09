@@ -1,0 +1,22 @@
+[gd_resource type="Resource" load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerInfo.gd" type="Script" id=1]
+[ext_resource path="res://Towers/SuperRifle/Scenes/SuperRifle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/SuperRifle/Scenes/SuperRiflePreview.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Towers/SuperRifle/Resources/ui_card.png" type="Texture" id=4]
+
+[resource]
+script = ExtResource( 1 )
+name = "Super Rifle"
+shop_price = 500
+sell_price = 150
+rarity = 1.0
+description = "Shoots powerful bursts of bullets"
+id = 18
+cost = 130
+level_sell_bonus = 10
+target = "first"
+preview_instance = ExtResource( 3 )
+tower_instance = ExtResource( 2 )
+max_level = 5
+img_normal = ExtResource( 4 )

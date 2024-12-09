@@ -1,0 +1,206 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Mobs/forklift/Forklift.gd" type="Script" id=1]
+[ext_resource path="res://Mobs/forklift/forklift.png" type="Texture" id=2]
+[ext_resource path="res://Mobs/hit_flash_shader.tres" type="Material" id=3]
+[ext_resource path="res://Mobs/forklift/forklift_certified_employees.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7.5, 9.5 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 2, 7 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Driver:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, -11 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "die_down"
+length = 1.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 2 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.11 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_flash"
+}, {
+"args": [ 1 ],
+"method": "set_relative_frame"
+}, {
+"args": [ false ],
+"method": "set_flash"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "die_up"
+length = 1.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.11 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ true ],
+"method": "set_flash"
+}, {
+"args": [ 2 ],
+"method": "set_relative_frame"
+}, {
+"args": [ false ],
+"method": "set_flash"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "move"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4, -10 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Driver:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ Vector2( -1, -12 ), Vector2( -1, -11 ) ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0 ],
+"method": "set_relative_frame"
+} ]
+}
+
+[node name="Forklift" type="Area2D"]
+script = ExtResource( 1 )
+max_health = 800.0
+base_speed = 8.5
+path_deviation = 1.0
+healthbar_width = 20.0
+aim_offset = Vector2( 0, -10 )
+h_flip_offset = Vector2( -9, 0 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = ExtResource( 3 )
+position = Vector2( 4, -10 )
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="Driver" type="Sprite" parent="."]
+position = Vector2( -1, -11 )
+texture = ExtResource( 4 )
+hframes = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( -1.5, -9.5 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 8, -9 )
+shape = SubResource( 2 )
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 4 )
+anims/die_down = SubResource( 6 )
+anims/die_up = SubResource( 5 )
+anims/move = SubResource( 3 )
+
+[connection signal="animation_finished" from="Animator" to="." method="_on_animation_finished"]

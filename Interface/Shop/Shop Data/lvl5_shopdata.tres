@@ -1,0 +1,20 @@
+[gd_resource type="Resource" load_steps=11 format=2]
+
+[ext_resource path="res://Interface/Shop/Shop Data/ShopData.gd" type="Script" id=1]
+[ext_resource path="res://Towers/AssaultCube/AssaultCubeInfo.tres" type="Resource" id=2]
+[ext_resource path="res://Items/EndPortal/EndPortal.tres" type="Resource" id=3]
+[ext_resource path="res://Towers/SuperRifle/SuperRifleInfo.tres" type="Resource" id=4]
+[ext_resource path="res://Towers/ChickenCoopBombFactory/ChickenCoopInfo.tres" type="Resource" id=5]
+[ext_resource path="res://Items/Pickaxe/Pickaxe.tres" type="Resource" id=6]
+[ext_resource path="res://Items/Gold Coins/GoldCoins.tres" type="Resource" id=7]
+[ext_resource path="res://Items/Reroll/RerollInfo.tres" type="Resource" id=8]
+[ext_resource path="res://Items/Universal Watch/UniversalWatchInfo.tres" type="Resource" id=10]
+[ext_resource path="res://Items/ProtectiveCup/ProtectiveCup.tres" type="Resource" id=11]
+
+[resource]
+script = ExtResource( 1 )
+towers = [ ExtResource( 4 ), ExtResource( 2 ), ExtResource( 5 ) ]
+items = [ ExtResource( 8 ), ExtResource( 7 ), ExtResource( 11 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 10 ) ]
+num_towers = Vector2( 2, 2 )
+num_items = Vector2( 3, 3 )
+shtupidness = 0.0

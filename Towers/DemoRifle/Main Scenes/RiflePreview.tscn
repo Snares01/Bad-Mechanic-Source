@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerPreview.gd" type="Script" id=1]
+[ext_resource path="res://Towers/DemoRifle/Main Scenes/Rifle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/DemoRifle/Resources/Rifle.png" type="Texture" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.99999
+height = 6.00001
+
+[node name="RiflePreview" type="Area2D"]
+collision_layer = 0
+collision_mask = 7
+input_pickable = false
+script = ExtResource( 1 )
+tower_instance = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -7 )
+texture = ExtResource( 3 )
+hframes = 6
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -4 )
+rotation = 1.5708
+shape = SubResource( 1 )

@@ -1,0 +1,118 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Towers/TowerFactory/Scenes/MiniTower.gd" type="Script" id=1]
+[ext_resource path="res://Towers/TowerFactory/Resources/tower_tracks.png" type="Texture" id=2]
+[ext_resource path="res://Towers/TowerFactory/Resources/tower_gun.png" type="Texture" id=3]
+[ext_resource path="res://Towers/DemoRifle/Resources/RifleBullet.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Gun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Gun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Shoot"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/path = NodePath("Gun:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.4, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "shoot"
+}, {
+"args": [  ],
+"method": "check_mobs"
+} ]
+}
+
+[sub_resource type="CapsuleShape2D" id=6]
+radius = 2.0
+height = 4.0
+
+[node name="Tower" type="Area2D"]
+script = ExtResource( 1 )
+id = 10
+range_offset = Vector2( 0, -3 )
+collide_shape = SubResource( 5 )
+bullet = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -3 )
+shape = SubResource( 1 )
+
+[node name="Gun" type="Sprite" parent="."]
+position = Vector2( 0, -4 )
+texture = ExtResource( 3 )
+hframes = 2
+frame = 1
+
+[node name="Tracks" type="Sprite" parent="."]
+position = Vector2( 0, -1 )
+texture = ExtResource( 2 )
+hframes = 4
+
+[node name="Animator" type="AnimationPlayer" parent="."]
+anims/Idle = SubResource( 2 )
+anims/RESET = SubResource( 3 )
+anims/Shoot = SubResource( 4 )
+
+[node name="ReflectCollider" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReflectCollider"]
+position = Vector2( 0, -1 )
+rotation = 1.5708
+shape = SubResource( 6 )
+
+[connection signal="area_entered" from="ReflectCollider" to="." method="_on_ReflectCollider_area_entered"]

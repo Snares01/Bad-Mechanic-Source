@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Towers/!Classes/TowerPreview.gd" type="Script" id=1]
+[ext_resource path="res://Towers/BrickHouse/Scenes/BrickHouse.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Towers/BrickHouse/Resources/brick_house.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 11, 6.5 )
+
+[node name="BrickHousePreview" type="Area2D"]
+script = ExtResource( 1 )
+tower_instance = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, -13 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -5.5 )
+shape = SubResource( 1 )

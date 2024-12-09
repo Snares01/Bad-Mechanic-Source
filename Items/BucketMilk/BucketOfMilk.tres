@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Items/BucketMilk/BucketOfMilk.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Items/!Classes/ConsumableInfo.gd" type="Script" id=2]
+[ext_resource path="res://Items/BucketMilk/milk.png" type="Texture" id=3]
+
+[resource]
+script = ExtResource( 2 )
+name = "Bucket Of Milk"
+shop_price = 80
+sell_price = 60
+rarity = 1.0
+description = "Removes poison, freeze, and stun effects from Joe"
+is_cooldown = false
+cooldown_duration = 10.0
+max_uses = 6
+img_ui = ExtResource( 3 )
+consume_effect = ExtResource( 1 )
+preview_effect = ExtResource( 1 )

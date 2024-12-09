@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://Items/!Classes/ConsumableInfo.gd" type="Script" id=1]
+[ext_resource path="res://Items/KarateClasses/karate_icon.png" type="Texture" id=2]
+[ext_resource path="res://Items/KarateClasses/KarateEffect.tscn" type="PackedScene" id=3]
+
+[resource]
+script = ExtResource( 1 )
+name = "Karate Classes"
+shop_price = 80
+sell_price = 50
+rarity = 1.0
+description = "Learn Invincible Dash-Jitsu"
+is_cooldown = true
+cooldown_duration = 3.0
+max_uses = -1
+img_ui = ExtResource( 2 )
+consume_effect = ExtResource( 3 )
+preview_effect = ExtResource( 3 )
